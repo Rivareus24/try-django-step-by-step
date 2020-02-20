@@ -11,17 +11,17 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name='product',
+            model_name='products',
             name='description',
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='product',
+            model_name='products',
             name='price',
             field=models.DecimalField(decimal_places=2, max_digits=100),
         ),
         migrations.AlterField(
-            model_name='product',
+            model_name='products',
             name='title',
             field=models.CharField(max_length=120),
         ),
