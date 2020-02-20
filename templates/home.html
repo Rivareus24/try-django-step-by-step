@@ -6,7 +6,11 @@
     <br>
     <ul>
         {% for team in teams %}
-            <li>{{ forloop.counter }} | {{ team }}</li>
+            {% if team == 'LAL' %}
+                <li>{{ forloop.counter }} | {{ team }}</li>
+            {% else %}
+                <li>{{ forloop.revcounter }} | {{ team|lower }}</li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% endblock %}
