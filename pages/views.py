@@ -1,12 +1,17 @@
 from django.http import HttpResponse
 
-
-# Create your views here.
 from django.shortcuts import render
 
 
+# Create your views here.
+
+
 def home_view(request, *args, **kwargs):
-    return render(request, "home.html", {})
+    my_context = {
+        'name': 'cool',
+        'teams': ['LAL', 'LAC', 'GSW', 'SAS']
+    }
+    return render(request, "home.html", my_context)
 
 
 def contact_view(request, *args, **kwargs):
