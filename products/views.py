@@ -14,6 +14,22 @@ def product_detail_view(request):
 
 
 def product_create_view(request):
+    form = ProductForm(request.GET)
+    if request.method == 'POST':
+        form = ProductForm(request.POST or None)
+        if form.is_valid():
+            print(form.cleaned_data)
+            Product.objects.create(**form.cleaned_data)
+        else:
+            print(form.errors)
+
+    context = {'form': form}
+
+    return render(request, "products/create.html", context)
+
+
+'''
+def product_create_view(request):
     form = ProductForm(request.POST or None)
 
     if form.is_valid():
@@ -23,3 +39,4 @@ def product_create_view(request):
     context = {'form': form}
 
     return render(request, "products/create.html", context)
+'''
