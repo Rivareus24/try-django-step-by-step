@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from products.forms import ProductForm
+from products.forms import ProductForm, RawProductForm
 from products.models import Product
 
 
@@ -14,9 +14,9 @@ def product_detail_view(request):
 
 
 def product_create_view(request):
-    form = ProductForm(request.GET)
+    form = RawProductForm(request.GET)
     if request.method == 'POST':
-        form = ProductForm(request.POST or None)
+        form = RawProductForm(request.POST or None)
         if form.is_valid():
             print(form.cleaned_data)
             Product.objects.create(**form.cleaned_data)
